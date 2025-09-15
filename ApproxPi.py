@@ -9,18 +9,22 @@ import time
 #PLEASE NOTE - This is an optional, extra credit portion of the lab.
 
 def main():
-  realPi = math.pi
+    precision = int(input("Decimal precision (1–10): "))
+    target = round(math.pi, precision)
 
-  #ask user for decimal percision (up to 10)
+    start = time.time()
 
-  start = time.time()
-  #calculate pi using the approximation technique
-  #Loop until the level of percision is reached
+    pi = 0
+    i = 0
+    while round(pi, precision) != target:
+        pi += 4 * (-1)**i / (2*i + 1)
+        i += 1
 
-  end = time.time()
+    end = time.time()
 
-  elapsedTime = end - start
-  print(elapsedTime)
+    print(f"\nApproximated π: {round(pi, precision)}")
+    print(f"Iterations:     {i}")
+    print(f"Time taken:     {end - start:.4f} seconds")
 
 if __name__ == '__main__':
-  main()
+    main()
